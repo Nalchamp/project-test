@@ -68,6 +68,36 @@ async function initApp() {
                 .catch(error => console.error('Error fetching data:', error));
         };
 
+        if (selectedName == "length") {
+            fetch('/vehicle/length')
+                .then(response => response.json())
+                .then(datal => {
+                    // Extract the "label" column from the JSON data
+                    console.log(datal) 
+                    const labels = datal.data.map(item => item.name);
+                    const values = datal.data.map(item => item.length);
+                    
+                    //render chart
+                    console.log(labels)
+                    console.log(values)
+                    const ctx = document.getElementById('myChart').getContext('2d');
+                    const myChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Vehicle Length',
+                                // Use the "value" column as the data for the chart
+                                data: values,
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        },
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        };
 
 
         // Render the heading.

@@ -28,6 +28,27 @@ app.get('/vehicle/speed', (req, res) => {
     });
 });
 
+  // Requires there to be a `length` query paramter.
+  app.get('/vehicle/length', (req, res) => {
+    console.log(`Running handler for ${req.url}`)
+    // Extract and validate the request paramters.
+    const query = `
+        SELECT name, length
+        FROM vehicles`
+    db.all(query, (err, rows) => {
+        if (err) {
+            console.error('Database error:', err);
+            res.status(500).json({ error: 'Database error' });
+            return;
+        }
+
+        // Send the data as JSON in the response
+        res.json({
+            data: rows
+        });
+    });
+});
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
