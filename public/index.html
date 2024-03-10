@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,17 @@
   <title>Graph Demo</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>    
-  
+
+<body>
+
   <div id="errorContainer"></div>
 
   <div>
     <label for="vehiclesDropdown">Choose your vehicle:</label>
     <select id="vehiclesDropdown">
       <option value="">Vehicle</option>
-      <option value= "maxSpeed">Max Speed  </option> 
-      <option value= "length">Length  </option> 
+      <option value="maxSpeed">Max Speed </option>
+      <option value="length">Length </option>
       <!-- Dynamic options will be inserted here -->
     </select>
     <canvas id="myChart"></canvas>
@@ -25,6 +27,7 @@
   <h1 id="title"></h1>
   <div id="vehiclesSpeedPlot"></div>
   <script src="vehicle.js"></script>
-  
-  </body>
+
+</body>
+
 </html>

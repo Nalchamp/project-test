@@ -7,7 +7,7 @@ const db = new sqlite3.Database('./Resources/StarWarsdatabase.db');
 // Configure express to serve static files from the `public` directory.
 app.use(express.static('public'));
 
-  // Requires there to be a `speed` query paramter.
+// Requires there to be a `speed` query paramter.
 app.get('/vehicle/speed', (req, res) => {
     console.log(`Running handler for ${req.url}`)
     // Extract and validate the request paramters.
@@ -28,8 +28,8 @@ app.get('/vehicle/speed', (req, res) => {
     });
 });
 
-  // Requires there to be a `length` query paramter.
-  app.get('/vehicle/length', (req, res) => {
+// Requires there to be a `length` query paramter.
+app.get('/vehicle/length', (req, res) => {
     console.log(`Running handler for ${req.url}`)
     // Extract and validate the request paramters.
     const query = `

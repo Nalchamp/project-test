@@ -29,28 +29,31 @@ async function fetchSpeedData(vehicleName) {
 
 async function initApp() {
     const nameSelectElem = document.getElementById("vehiclesDropdown");
-    
+    let myChart;
     nameSelectElem.addEventListener("change", async () => {
         const selectedName = nameSelectElem.value
         console.debug("nameSelectElem change handler:", { selectedName });
         if (!selectedName) {
             return;
         }
-    
+
         if (selectedName == "maxSpeed") {
             fetch('/vehicle/speed')
                 .then(response => response.json())
                 .then(dat => {
                     // Extract the "label" column from the JSON data
-                    console.log(dat) 
+                    console.log(dat)
                     const labels = dat.data.map(item => item.name);
                     const values = dat.data.map(item => item.max_atmosphering_speed);
-                    
+
                     //render chart
                     console.log(labels)
                     console.log(values)
                     const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart = new Chart(ctx, {
+                    if (myChart) {
+                        myChart.destroy()
+                    };
+                    myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
                             labels: labels,
@@ -73,15 +76,18 @@ async function initApp() {
                 .then(response => response.json())
                 .then(datal => {
                     // Extract the "label" column from the JSON data
-                    console.log(datal) 
+                    console.log(datal)
                     const labels = datal.data.map(item => item.name);
                     const values = datal.data.map(item => item.length);
-                    
+
                     //render chart
                     console.log(labels)
                     console.log(values)
                     const ctx = document.getElementById('myChart').getContext('2d');
-                    const myChart = new Chart(ctx, {
+                    if (myChart) {
+                        myChart.destroy()
+                    };
+                    myChart = new Chart(ctx, {
                         type: 'bar',
                         data: {
                             labels: labels,
