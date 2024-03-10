@@ -5,7 +5,7 @@ function showError(error) {
     console.error(respJson.error)
 }
 
-async function fetchAllName() {
+async function fetchallVehicleName() {
     try {
         const response = await fetch("/vehicleName");
         return await response.json();    
@@ -15,9 +15,9 @@ async function fetchAllName() {
     
 }
 
-async function fetchSpeedData(name) {
+async function fetchSpeedData(vehicleName) {
     try {
-        const url = `/model?vehicleName=${name}`
+        const url = `/vehicleSpeed?vehicleName=${vehicleName}`
         const response = await fetch(url);
         const jsonResponse = await response.json();    
         console.debug({ url, jsonResponse });

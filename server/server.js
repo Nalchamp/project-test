@@ -37,7 +37,7 @@ app.get('/vehicleName', (req, res) => {
 
 
   // Requires there to be a `planets` query paramter.
-app.get('/vehicleModel', (req, res) => {
+app.get('/vehicleSpeed', (req, res) => {
     console.log(`Running handler for ${req.url}`)
     // Extract and validate the request paramters.
     const name = req.query.vehicleName;    
@@ -48,7 +48,7 @@ app.get('/vehicleModel', (req, res) => {
 
     console.log(`Querying database for population data. vehicleName=${name}`);
     const query = `
-        SELECT model, max_atmosphering_speed
+        SELECT max_atmosphering_speed
         FROM vehicles
         WHERE name = :name;`
     db.all(query, { ":name": name }, (err, rows) => {
